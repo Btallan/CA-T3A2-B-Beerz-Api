@@ -10,4 +10,5 @@ if message.count == 0
     message.create(text: "example text 1")
     message.create(text: "example text 2")
     message.create(text: "example text 3")
+end
     
