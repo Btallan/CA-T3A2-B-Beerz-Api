@@ -5,3 +5,9 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+if message.count == 0
+    message.create(text: "example text 1")
+    message.create(text: "example text 2")
+    message.create(text: "example text 3")
+    
