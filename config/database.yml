@@ -81,5 +81,5 @@ test:
 production:
   <<: *default
   database: beerz_api_production
-  username: beerz_api
-  password: <%= ENV['BEERZ_API_DATABASE_PASSWORD'] %>
+  username: ducki
+  password: dell
