@@ -18,7 +18,7 @@ class CommentsController < ApplicationController
     @comment = Comment.new(comment_params)
 
     if @comment.save
-      render json: @comment, status: :created, location: @comment
+      render json: @comment, status: :created #, location: @comment Edited out for front-end - Used to send to a page after saving comment.
     else
       render json: @comment.errors, status: :unprocessable_entity
     end
@@ -46,6 +46,6 @@ class CommentsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def comment_params
-      params.require(:comment).permit(:test)
+      params.require(:comment).permit(:text)
     end
 end

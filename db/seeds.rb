@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 if Comment.count == 0
-    Comment.create(text: "example text 1")
-    Comment.create(text: "example text 2")
-    Comment.create(text: "example text 3")
+    Comment.create!(text: "example 1")
+    Comment.create!(text: "example 2")
+    Comment.create!(text: "example 3")
 end
