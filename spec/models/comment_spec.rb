@@ -11,4 +11,10 @@ RSpec.describe Comment, type: :model do
  it "validates properly with text attribution" do
   expect(subject).to be_valid
  end
+
+ it "is not valid without text - empty comments" do
+  subject.text = ""
+  expect(subject).not_to be_valid 
+ end
+
 end

@@ -13,24 +13,50 @@ require 'rails_helper'
 # sticking to rails and rspec-rails APIs to keep things simple and stable.
 
 RSpec.describe "/comments", type: :request do
-  # This should return the minimal set of attributes required to create a valid
-  # Comment. As you add validations to Comment, be sure to
-  # adjust the attributes here as well.
-  let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
-  }
 
-  let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
-  }
+  before(:each) do
+    FactoryBot.create(:comment, text: "Comment testing 1")
+    FactoryBot.create(:comment, text: "Comment testing 2")
+    FactoryBot.create(:comment, text: "Comment testing 3 - End comment")
+  end
 
-  # This should return the minimal set of values that should be in the headers
-  # in order to pass any filters (e.g. authentication) defined in
-  # CommentsController, or in your router and rack
-  # middleware. Be sure to keep this updated too.
-  let(:valid_headers) {
-    {}
-  }
+  # test to check all current comments.
+  describe "get all comments at /comments" do
+    it "return all comments present" do
+      get "/comments"
+      expect(response).to have_http_status(:success)
+      print JSON.parse(response.body)
+      expect(JSON.parse(response.body).size).to eq(3)    
+    end
+  end
+
+  describe "get a comment at /comments/:id" do
+    it "return a comment based on id / params" do
+      get "/comments/4"
+      expect(response).to have_http_status(:success)
+      expect(response.body).to include("Comment testing 1")  
+    end
+  end
+
+  #                          COMMENTED OUT FOR TESTING MANUAL
+  # # This should return the minimal set of attributes required to create a valid
+  # # Comment. As you add validations to Comment, be sure to
+  # # adjust the attributes here as well.
+  # let(:valid_attributes) {
+  #   skip("Add a hash of attributes valid for your model")
+  # }
+
+  # let(:invalid_attributes) {
+  #   skip("Add a hash of attributes invalid for your model")
+  # }
+
+  # # This should return the minimal set of values that should be in the headers
+  # # in order to pass any filters (e.g. authentication) defined in
+  # # CommentsController, or in your router and rack
+  # # middleware. Be sure to keep this updated too.
+  # let(:valid_headers) {
+  #   {}
+  # }
                                   # This will be uncommented once manual testing has finished.
   # describe "GET /index" do
   #   it "renders a successful response" do
