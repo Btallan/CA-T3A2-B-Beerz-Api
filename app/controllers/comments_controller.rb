@@ -10,7 +10,11 @@ class CommentsController < ApplicationController
 
   # GET /comments/1
   def show
-    render json: @comment
+    if @message
+      render json: @comment
+    else
+      render json: {"error": "Comment does not exist, wrong id."}, status: :not_found
+    end
   end
 
   # POST /comments
@@ -41,7 +45,7 @@ class CommentsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_comment
-      @comment = Comment.find(params[:id])
+      @comment = Comment.find_by_id(params[:id])
     end
 
     # Only allow a trusted parameter "white list" through.

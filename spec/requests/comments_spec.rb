@@ -25,17 +25,26 @@ RSpec.describe "/comments", type: :request do
     it "return all comments present" do
       get "/comments"
       expect(response).to have_http_status(:success)
-      print JSON.parse(response.body)
+      #print JSON.parse(response.body)
       expect(JSON.parse(response.body).size).to eq(3)    
     end
   end
 
+            #Doesn't work? not sure why - doesn't carry over messages to this test.
   describe "get a comment at /comments/:id" do
     it "return a comment based on id / params" do
-      get "/comments/4"
+      print JSON.parse(response.body)
+      get "/comments/1"
       expect(response).to have_http_status(:success)
       expect(response.body).to include("Comment testing 1")  
     end
+
+    it "returns notfound - based on wrong ID/param" do
+      get "/comments/4444"
+      expect(response).to have_http_status(:not_found) 
+      expect(response.body).to include("wrong id")  
+    end
+
   end
 
   #                          COMMENTED OUT FOR TESTING MANUAL
