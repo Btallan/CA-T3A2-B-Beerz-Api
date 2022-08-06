@@ -16,6 +16,17 @@ RSpec.describe "/products", type: :request do
   # This should return the minimal set of attributes required to create a valid
   # Product. As you add validations to Product, be sure to
   # adjust the attributes here as well.
+  
+  before(:each) do
+    FactoryBot.create(:product, name: "beer test 1", title: "beer test 1", description: "beer test1", price: 15)
+    #FactoryBot.create(:product, text: "Comment testing 2")
+    #FactoryBot.create(:product, text: "Comment testing 3 - End comment")
+  end
+
+
+
+
+
   let(:valid_attributes) {
     skip("Add a hash of attributes valid for your model")
   }
