@@ -7,7 +7,7 @@
 
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
   allow do
-    origins 'localhost:3000' #need to update to netlify URL
+    origins 'localhost:3000', 'https://beerz.netlify.app' #need to update to netlify URL
 
     resource '*',
       headers: :any,
