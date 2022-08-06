@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :attendees
+  resources :events
+  resources :orders
   resources :tags
   resources :reviews
   resources :users
